@@ -3,18 +3,27 @@ import openpyxl
 import random
 
 app = Flask(__name__)
-wb = openpyxl.load_workbook(filename = 'class_list.xlsx')
 
+classlist_period1 = 'Danya Al-Hussieni\nAlexa Au\nDavid Baranov\nAmira Bendaas\nAli Bensaci\nIris Diep\nIman Fatima\nJaime Fleming\nDavid Haighton\nTawfiqul Haque\nAdam Hifato\nBreanna Hillier\nCole Horton\nNathan Huynh\nPreetkiran Kaur\nBenjamin Lieu\nKoreena McCulloch\nEmily Milshtein\nDuaa Osman\nKehan Rattani\nSarah Ross\nTina Tran\nDavid Wallace\nJustin Weiner\nJacob Zachariah'
+classlist_period2 = 'Abigail Awrey\nFaith Babalola\nMohamad-Zouheir Bayaa\nEmily Boland\nNeeharika Boni Bangari\nAhmed Hafez\nGrace Kim\nAllison Kuseler\nBenjamin Le\nAlexander McNamee\nTarnia Muralitharan\nAutumn Parry\nMakayla Perry\nLandon Prosty\nAliya Rattani\nMuhammad Raza\nEric Robert\nArianna Seeley\nSovyanna Sreng-Pech\nAbhiram Sureshkumar\nAdora Tran\nJamie Wootton'
+
+classlist_period3 = 'Omar Abdul\nIzaak Aidid\nNeeharika Boni Bangari\nLuna Bukvic\nEthan Da Silveira\nJillian Desjardins\nDavis Dewan\nJoshua Flett\nMalia Ghadban\nAmine Hammoud\nSerena Haslip\nVicky Huynh\nSahil Lal\nAudrey Lun\nCaitlin McMann\nAlexander McNamee\nBrooklyn Pike\nAliya Rattani\nMuhammad Raza\nJodi Ruddick\nSavida Uddin\nDarren Wallace\nMegan Winger\nAdel Yasin\nMaryam Yassin\nJessica Yeung'
 
 @app.route('/period1')
-def index():
-	sheet = wb.get_sheet_names()[0]
-	worksheet = wb.get_sheet_by_name(sheet)
-	student_names = [clean_name(name.value) for name in worksheet['B']]
-	print(type(student_names))
-	return render_template('index.html', student_names=listToString(student_names))
+def period1():
+	return render_template('index.html', student_names=classlist_period1)
 
-@app.route('/', methods=['POST'])
+@app.route('/period2')
+def period2():
+	return render_template('index.html', student_names=classlist_period2)
+
+@app.route('/period3')
+def period3():
+	return render_template('index.html', student_names=classlist_period3)
+
+@app.route('/period1', methods=['POST'])
+@app.route('/period2', methods=['POST'])
+@app.route('/period3', methods=['POST'])
 def my_form_post():
     text = request.form['text']
 
@@ -46,10 +55,3 @@ def clean_list(l):
 def clean_name(name):
 	temp = name.split(',')
 	return ' '.join(reversed(temp))
-
-def listToString(l):
-	s = ""
-	for i in list:
-		s += (i+'\n')
-
-	return s
