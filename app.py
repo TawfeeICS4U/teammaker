@@ -1,5 +1,7 @@
 from flask import Flask, request, render_template
 import random
+import math
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -25,8 +27,8 @@ def my_form_post():
     
     return render_template('index.html', groups=groups)
 
-def number_of_groups(n, l): #n is the number of groups desired
-    d = len(l)//n
+def number_of_groups(n, l): #n is the number of groups desired,
+    d = math.ceil(len(l)/n)
     return students_per_group(d, l)
 
 def students_per_group(n, l): #n is the number of students per group desired
