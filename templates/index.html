@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html>
+{%extends "base.html"%}
 
-<head>
-    <title>Group Maker</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
+<!-- qa3 -->
 
-<body style="background-color: #d4d4d4;">
+{% block content %}
 	<div class="container">
 		<div class="row">
 			<div class="col mt-2">
@@ -34,6 +30,15 @@
 		    </div>
 		</div>
 	</div>
-</body>
 
-</html>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    <script>
+	      var messages = {{ messages | safe }};
+	      for (var i=0; i<messages.length; i++) {
+	        alert(messages[i]);
+	      }
+	    </script>
+	  {% endif %}
+	{% endwith %}
+{% endblock %}

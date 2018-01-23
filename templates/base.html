@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Group Maker</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body style="background-color: #d4d4d4;">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	    <a class="navbar-brand" href="#">Group Maker</a>
+	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarNav">
+	        <ul class="navbar-nav">
+	            <li class="nav-item">
+	                <a class="nav-link" href="{{ url_for('period1') }}">Period 1<span class="sr-only">(current)</span></a>
+	            </li>
+	            <li>
+	            	<a class="nav-link" href="{{ url_for('period2') }}">Period 2<span class="sr-only">(current)</span></a>
+	            </li>
+	            <li>
+	            	<a class="nav-link" href="{{ url_for('period3') }}">Period 3<span class="sr-only">(current)</span></a>
+	            </li>
+	        </ul>
+	    </div>
+	</nav>
+	{% block content %} {% endblock %}
+</body>
+</html>
